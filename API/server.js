@@ -1,4 +1,4 @@
-const { startMongoose } = require('./lib/mongoose');
+const { run } = require('./lib/mongoose');
 // const index = require('./index');
 const http = require('http');
 const app = require('./index');
@@ -9,5 +9,5 @@ const server = http.createServer(app);
 	server.listen(PORT, () => {
 		console.log(`Server started on PORT ${PORT}...`);
 	});
-	// await startMongoose();
+	await run();
 })();
