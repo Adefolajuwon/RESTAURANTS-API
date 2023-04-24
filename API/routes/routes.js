@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const express = require('express');
-const getStoreController = require('../controllers/storeActive');
+const getStoreController = require('../controllers/storeActiveController');
 const router = express.Router();
 
 router.get('/trigger_report', async (req, res) => {

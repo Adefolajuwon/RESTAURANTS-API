@@ -3,7 +3,7 @@ const storeActiveSchema2 = require('../schemas/active2');
 const mongoose = require('mongoose');
 async function getStore(storeId) {
 	try {
-		let response = storeActiveSchema.findById(storeId);
+		let response = storeActiveSchema.findOne(storeId);
 
 		if (!response) {
 			console.log('user not found');
