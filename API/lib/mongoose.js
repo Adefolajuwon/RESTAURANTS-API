@@ -1,19 +1,19 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
-const { MongoClient } = require('mongodb');
+// require('dotenv').config();
+// const mongoose = require('mongoose');
+// const { MongoClient } = require('mongodb');
 
-mongoose.connection.once('open', () => {
-	console.log('Mongoose connection started....');
-});
+// mongoose.connection.once('open', () => {
+// 	console.log('Mongoose connection started....');
+// });
 
-mongoose.connection.on('error', (e) => {
-	console.log('Mongoose connection failed......' + e);
-});
-async function startMongoose() {
-	await mongoose.connect(
-		'mongodb+srv://juwon:tremothegoat@cluster0.lary7db.mongodb.net/?retryWrites=true&w=majority'
-	);
-}
+// mongoose.connection.on('error', (e) => {
+// 	console.log('Mongoose connection failed......' + e);
+// });
+// async function startMongoose() {
+// 	await mongoose.connect(
+// 		'mongodb+srv://juwon:tremothegoat@Cluster0.mongodb.net/restaurants?retryWrites=true&w=majority'
+// 	);
+// }
 // Connection URL for cluster 1
 // const url1 =
 // 	'mongodb+srv://juwon:tremothegoat@menu.mongodb.net/restaurants?retryWrites=true&w=majority';
@@ -43,4 +43,30 @@ async function startMongoose() {
 // 	console.log('Connected to both clusters');
 // }
 
-module.exports = { startMongoose, mongoose };
+// module.exports = { startMongoose, mongoose };
+const { MongoClient } = require('mongodb');
+
+// Replace the uri string with your MongoDB deployment's connection string.
+const uri =
+	'mongodb+srv://<user>:<password>@<cluster-url>?retryWrites=true&writeConcern=majority';
+
+const client = new MongoClient(uri);
+
+async function startMongoose() {
+	try {
+		await client.connect();
+
+		const database = client.db('restaurants');
+		const movies = database.collection('store');
+
+		// Query for a movie that has the title 'Back to the Future'
+		// const query = { title: 'Back to the Future' };
+		// const movie = await movies.findOne(query);
+
+		// console.log(movie);
+	} finally {
+		// Ensures that the client will close when you finish/error
+		await client.close();
+	}
+}
+module.exports = { startMongoose };
