@@ -2,7 +2,7 @@ const getStore = require('../models/getStore');
 async function getStoreController(req, res) {
 	try {
 		// const id = req.params.id;
-		const store = await getStore(id);
+		const store = await getStore(store_id);
 		return store;
 	} catch (error) {
 		console.log(error);
