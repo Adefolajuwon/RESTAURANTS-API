@@ -7,31 +7,50 @@ const mongoose = require('mongoose');
 // module.exports = { startMongoose, mongoose };
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri =
-	'mongodb+srv://juwon:tremothegoat@cluster0.lary7db.mongodb.net/?retryWrites=true&w=majority';
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-	serverApi: {
-		version: ServerApiVersion.v1,
-		strict: true,
-		deprecationErrors: true,
-	},
-});
 
 async function run() {
-	try {
-		// Connect the client to the server	(optional starting in v4.7)
-		await client.connect();
-		// Send a ping to confirm a successful connection
-		await client.db('restaurants').command({ ping: 1 });
-		console.log(
-			'Pinged your deployment. You successfully connected to MongoDB!'
-		);
-	} finally {
-		// Ensures that the client will close when you finish/error
-		await client.close();
-	}
+	// TODO:
+	// Replace the placeholder connection string below with your
+	// Altas cluster specifics. Be sure it includes
+	// a valid username and password! Note that in a production environment,
+	const uri =
+		'mongodb+srv://juwon:tremothegoat@cluster0.lary7db.mongodb.net/?retryWrites=true&w=majority';
+
+	// The MongoClient is the object that references the connection to our
+	// datastore (Atlas, for example)
+	const client = new MongoClient(uri);
+
+	// The connect() method does not attempt a connection; instead it instructs
+	// the driver to connect using the settings provided when a connection
+	// is required.
+	await client.connect();
+
+	// Provide the name of the database and collection you want to use.
+	// If the database and/or collection do not exist, the driver and Atlas
+	// will create them automatically when you first write data.
+	const dbName = 'restaurants';
+	const collectionName1 = 'store';
+	const collectionName2 = 'menu';
+	const collectionName3 = 'bq-results';
+
+	// Create references to the database and collection in order to run
+	// operations on them.
+	const database = client.db(dbName);
+	const collection = database.collection(collectionName1);
+	const collection2 = database.collection(collectionName2);
+	const collection3 = database.collection(collectionName3);
+
+	/*
+	 *  *** INSERT DOCUMENTS ***
+	 *
+	 * You can insert individual documents using collection.insert().
+	 * In this example, we're going to create four documents and then
+	 * insert them all in one call with collection.insertMany().
+	 */
+
+	await client.close();
+	console.log('connected to mongodb ');
 }
 run().catch(console.dir);
+
 module.exports = { run };
