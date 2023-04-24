@@ -1,6 +1,7 @@
-async function getStoreController() {
+const getStore = require('../models/getStore');
+async function getStoreController(req, res) {
 	try {
-		const id = req.params.store_id;
+		const id = req.params.id;
 		const store = await getStore(id);
 		return store;
 	} catch (error) {
@@ -8,3 +9,4 @@ async function getStoreController() {
 		res.status(401).json({ error: error.message });
 	}
 }
+module.exports = getStoreController;

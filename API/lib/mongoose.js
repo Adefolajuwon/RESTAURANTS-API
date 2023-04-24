@@ -1,4 +1,6 @@
-// require('dotenv').config();
+require('dotenv').config();
+const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
 // const mongoose = require('mongoose');
 // const { MongoClient } = require('mongodb');
 
@@ -44,29 +46,54 @@
 // }
 
 // module.exports = { startMongoose, mongoose };
-const { MongoClient } = require('mongodb');
 
 // Replace the uri string with your MongoDB deployment's connection string.
-const uri =
-	'mongodb+srv://<user>:<password>@<cluster-url>?retryWrites=true&writeConcern=majority';
+// const uri =
+// 	'mongodb+srv://juwon:tremothegoat@cluster0.lary7db.mongodb.net/?retryWrites=true&w=majority';
 
-const client = new MongoClient(uri);
+// const client = new MongoClient(uri);
+// mongoose.connection.once('open', () => {
+// 	console.log('Mongoose connection started....');
+// });
 
-async function startMongoose() {
-	try {
-		await client.connect();
+// mongoose.connection.on('error', (e) => {
+// 	console.log('Mongoose connection failed......' + e);
+// });
+// async function startMongoose() {
+// 	try {
+// 		await client.connect();
 
-		const database = client.db('restaurants');
-		const movies = database.collection('store');
+// 		const database = client.db('restaurants');
+// 		const collection = database.collection('store');
 
-		// Query for a movie that has the title 'Back to the Future'
-		// const query = { title: 'Back to the Future' };
-		// const movie = await movies.findOne(query);
+// 		// Query for a movie that has the title 'Back to the Future'
+// 		// const query = { title: 'Back to the Future' };
+// 		// const movie = await movies.findOne(query);
 
-		// console.log(movie);
-	} finally {
-		// Ensures that the client will close when you finish/error
-		await client.close();
-	}
-}
-module.exports = { startMongoose };
+// 		// console.log(movie);
+// 	} catch (error) {
+// 		// Ensures that the client will close when you finish/error
+// 		console.log(error);
+// 	}
+// }
+// require('dotenv').config();
+// const uri =
+// 	'mongodb+srv://juwon:tremothegoat@cluster0.lary7db.mongodb.net/?retryWrites=true&w=majority';
+// mongoose.connection.once('open', () => {
+// 	console.log('Mongoose connection started....');
+// });
+// const client = new MongoClient(uri);
+
+// mongoose.connection.on('error', (e) => {
+// 	console.log('Mongoose connection failed......' + e);
+// });
+// async function startMongoose() {
+// 	try {
+// 		await mongoose.connect(uri);
+// 		const database = client.db('restaurants');
+// 		const collection = database.collection('store');
+// 	} catch (error) {
+// 		console.log(error);
+// 	}
+// }
+// module.exports = { startMongoose, mongoose };
