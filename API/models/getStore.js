@@ -1,9 +1,10 @@
 const storeActiveSchema = require('../schemas/active');
 const storeActiveSchema2 = require('../schemas/active2');
-const mongoose = require('mongoose');
+const run = require('../lib/mongoose');
 async function getStore(storeId) {
 	try {
-		let response = storeActiveSchema.findOne(storeId);
+		const collection2 = (await run).collection2;
+		let response = collection2.findOne(storeId);
 
 		if (!response) {
 			console.log('user not found');
