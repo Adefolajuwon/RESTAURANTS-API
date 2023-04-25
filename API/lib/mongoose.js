@@ -40,17 +40,9 @@ async function run() {
 	const collection2 = database.collection(collectionName2);
 	const collection3 = database.collection(collectionName3);
 
-	/*
-	 *  *** INSERT DOCUMENTS ***
-	 *
-	 * You can insert individual documents using collection.insert().
-	 * In this example, we're going to create four documents and then
-	 * insert them all in one call with collection.insertMany().
-	 */
-
 	await client.close();
 	console.log('connected to mongodb ');
 }
 run().catch(console.dir);
 
-module.exports = { run };
+module.exports = { run, collection2, collection3 };
