@@ -8,7 +8,7 @@ const server = https.createServer(app);
 
 (async function () {
 	server.listen(PORT, () => {
-		console.log(`Server started on PORT ${PORT}...`);
+		console.log(`Server started on PORT ${PORT}....`);
 	});
 	await startMongoose();
 })();
