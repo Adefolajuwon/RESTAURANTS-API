@@ -14,5 +14,5 @@ router.get('/get_report', async (req, res) => {
 	// If the report generation is complete, return the CSV file
 	// If the report generation is not complete, return "Running" as the output
 });
-router.get('/test/:id', getStoreController);
+router.get('/test', getStoreController);
 module.exports = router;
