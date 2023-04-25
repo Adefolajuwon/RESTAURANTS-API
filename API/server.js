@@ -22,7 +22,7 @@ const DB_NAME = 'restaurants';
 const COLLECTION_NAME = 'menu';
 const COLLECTION_NAME2 = 'store';
 const COLLECTION_NAME3 = 'bq-results';
-
+const { run } = require('./lib/mongoose');
 async function startServer() {
 	// Connect to MongoDB
 	const client = new MongoClient(MONGODB_URI, {
@@ -37,10 +37,16 @@ async function startServer() {
 
 	// Set up HTTP server
 	const server = http.createServer(app);
-
-	server.listen(PORT, () => {
-		console.log(`Server started on PORT ${PORT}...`);
-	});
+	// await run(); // Connect to MongoDB client
+	// server.listen(PORT, () => {
+	// 	console.log(`Server started on PORT ${PORT}...`);
+	// });
+	(async function () {
+		server.listen(PORT, () => {
+			console.log(`Server started on PORT ${PORT}...`);
+		});
+		await run(); // Connect to MongoDB client
+	})();
 }
 
 startServer().catch(console.error);
