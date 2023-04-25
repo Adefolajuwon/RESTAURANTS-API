@@ -1,6 +1,10 @@
 const { Router } = require('express');
 const express = require('express');
-const getStoreController = require('../controllers/storeActiveController');
+const {
+	getStoreController,
+	getActiveController,
+	getHoursController,
+} = require('../controllers/storeActiveController');
 const router = express.Router();
 
 router.get('/trigger_report', async (req, res) => {
@@ -15,4 +19,7 @@ router.get('/get_report', async (req, res) => {
 	// If the report generation is not complete, return "Running" as the output
 });
 router.get('/test', getStoreController);
+router.get('/active', getActiveController);
+router.get('/hours', getHoursController);
+
 module.exports = router;
