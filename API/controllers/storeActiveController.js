@@ -1,9 +1,9 @@
-const { getStore } = require('../models/getStore');
-async function getStoreController(req, res) {
+const getStatus = require('../models/getStore');
+async function getStatusController(req, res) {
 	try {
 		const findOneQuery = { status: 'active' };
 
-		const store = await getStore(findOneQuery);
+		const store = await getStatus(findOneQuery);
 		if (!store) {
 			res.status(404).json({ error: 'store not found' });
 			return;
@@ -17,5 +17,5 @@ async function getStoreController(req, res) {
 }
 
 module.exports = {
-	getStoreController,
+	getStatusController,
 };

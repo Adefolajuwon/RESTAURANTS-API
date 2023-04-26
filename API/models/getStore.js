@@ -1,9 +1,8 @@
 const storeActiveSchema = require('../schemas/active');
 const run = require('../lib/mongoose');
-async function getStore(storeId) {
+async function getStatus(storeId) {
 	try {
-		const collection = run.collection;
-		let response = collection.findOne(storeId);
+		let response = storeActiveSchema.findOne(storeId);
 
 		if (!response) {
 			console.log('user not found');
@@ -13,4 +12,4 @@ async function getStore(storeId) {
 		console.log(error);
 	}
 }
-module.exports = getStore;
+module.exports = getStatus;
