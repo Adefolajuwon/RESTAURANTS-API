@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const storeHoursSchema = new mongoose.Schema({
 	store_id: String,
-	dayOfWeek: Number,
+	day: Number,
 	start_time_local: Date,
 	end_time_local: Date,
 });
