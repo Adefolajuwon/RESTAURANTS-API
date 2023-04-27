@@ -1,8 +1,8 @@
 const getStatus = require('../models/getStore');
 async function getStatusController(req, res) {
 	try {
-		const findOneQuery = { status: 'active' };
-
+		const findOneQuery = { store_id: 'active' };
+		//let id = ''
 		const store = await getStatus(findOneQuery);
 		if (!store) {
 			res.status(404).json({ error: 'store not found' });
