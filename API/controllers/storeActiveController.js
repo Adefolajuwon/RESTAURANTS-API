@@ -1,7 +1,7 @@
 const getStatus = require('../models/getStore');
 async function getStatusController(req, res) {
 	try {
-		const findOneQuery = { store_id: 'active' };
+		const findOneQuery = { timestamp_utc: '2023-01-24 09:08:18.436854 UTC' };
 		//let id = ''
 		const store = await getStatus(findOneQuery);
 		if (!store) {
