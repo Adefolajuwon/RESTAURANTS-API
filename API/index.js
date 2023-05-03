@@ -7,6 +7,7 @@ const routes = require('./routes/routes');
 // 	console.log(req.body); // log the request body
 // 	next();
 // });
+// ffffffffffffffffffffffoo
 app.use('/api', routes);
 
 module.exports = app;
