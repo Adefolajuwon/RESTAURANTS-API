@@ -8,6 +8,7 @@ const routes = require('./routes/routes');
 // 	next();
 // });
 // ffffffffffffffffffffffoo
+// gggg
 app.use('/api', routes);
 
 module.exports = app;
