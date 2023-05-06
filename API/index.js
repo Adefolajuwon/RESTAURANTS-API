@@ -7,11 +7,7 @@ const routes = require('./routes/routes');
 // 	console.log(req.body); // log the request body
 // 	next();
 // });
-// ffffffffffffffffffffffoo
-// gggg
-// sd??/?
-// cat
-// rat
+
 app.use('/api', routes);
 
 module.exports = app;
