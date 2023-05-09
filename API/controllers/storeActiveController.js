@@ -16,6 +16,7 @@ async function getStatusController(req, res) {
 		res.status(401).json({ error: error.message });
 	}
 }
+async function getInfo() {}
 
 module.exports = {
 	getStatusController,
