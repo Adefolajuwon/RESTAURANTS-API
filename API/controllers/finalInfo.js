@@ -1,3 +1,3 @@
-async function finalInfo() {
+async function finalinfo() {
 	const store_id = req.body.id;
 }
