@@ -1,4 +1,4 @@
-const getStatus = require('../models/getActive');
+const { getStatus, getStoreById } = require('../models/getActive');
 
 async function getStatusController(req, res) {
 	try {
@@ -16,8 +16,25 @@ async function getStatusController(req, res) {
 		res.status(401).json({ error: error.message });
 	}
 }
-async function getInfo() {}
-
+async function getStoreByIdController(req, res) {
+	try {
+		//const findOneQuery = {};
+		const id = req.body.id;
+		const store = await getStoreById(id);
+		if (store === null) {
+			res.status(404).json({ error: 'store not found' });
+		} else {
+			res.status(200).json({ status: store });
+		}
+		console.log(store);
+	} catch (error) {
+		console.log(error);
+		res.status(401).json({ error: error.message });
+	}
+}
+// async function getInfo() {}
+5955337179846162000;
 module.exports = {
 	getStatusController,
+	getStoreByIdController,
 };

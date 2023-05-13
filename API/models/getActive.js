@@ -20,11 +20,11 @@ async function getStoreById(store_id) {
 		if (!response) {
 			console.log('store not found');
 		} else {
-			return resonse;
+			return response;
 		}
 	} catch (error) {
 		console.log(error);
 	}
 }
 
-module.exports = getStatus;
+module.exports = { getStatus, getStoreById };
