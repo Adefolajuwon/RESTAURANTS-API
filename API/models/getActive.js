@@ -14,5 +14,17 @@ async function getStatus(storeId) {
 		console.log(error);
 	}
 }
+async function getStoreById(store_id) {
+	try {
+		let response = awaitActive.findOne(store_id);
+		if (!response) {
+			console.log('store not found');
+		} else {
+			return resonse;
+		}
+	} catch (error) {
+		console.log(error);
+	}
+}
 
 module.exports = getStatus;
