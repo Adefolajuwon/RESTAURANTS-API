@@ -14,9 +14,21 @@ async function getStatus(storeId) {
 		console.log(error);
 	}
 }
-async function getStoreById(store_id) {
+// async function getStoreById(store_id) {
+// 	try {
+// 		let response = await storeActive.findOne(store_id);
+// 		if (!response) {
+// 			console.log('store not found');
+// 		} else {
+// 			return response;
+// 		}
+// 	} catch (error) {
+// 		console.log(error);
+// 	}
+// }
+async function getStoreById(findOneQuery) {
 	try {
-		let response = awaitActive.findOne(store_id);
+		let response = await storeActive.findOne(findOneQuery);
 		if (!response) {
 			console.log('store not found');
 		} else {

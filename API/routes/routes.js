@@ -1,6 +1,9 @@
 const { Router } = require('express');
 const express = require('express');
-const { getStatusController } = require('../controllers/storeActiveController');
+const {
+	getStatusController,
+	getStoreByIdController,
+} = require('../controllers/storeActiveController');
 const router = express.Router();
 
 router.get('/trigger_report', async (req, res) => {
@@ -14,6 +17,7 @@ router.get('/get_report', async (req, res) => {
 	// If the report generation is complete, return the CSV file
 	// If the report generation is not complete, return "Running" as the output.
 });
-router.get('/test', getStatusController);
+router.get('/test', getStoreByIdController);
+// router.get('/test', getStatusController);
 
 module.exports = router;

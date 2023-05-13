@@ -18,10 +18,10 @@ async function getStatusController(req, res) {
 }
 async function getStoreByIdController(req, res) {
 	try {
-		//const findOneQuery = {};
-		const id = req.body.id;
-		const store = await getStoreById(id);
-		if (store === null) {
+		const findOneQuery = { store_id: 6 };
+		//const id = req.body.id;
+		const store = await getStoreById(findOneQuery);
+		if (!store) {
 			res.status(404).json({ error: 'store not found' });
 		} else {
 			res.status(200).json({ status: store });
