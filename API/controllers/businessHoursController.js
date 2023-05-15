@@ -1,0 +1,19 @@
+async function getStoreByIdtimezoneController(req, res) {
+	try {
+		const findOneQuery = { store_id: '5415949628544298000' };
+		//const id = req.body.id;
+		const store = await getStoreById(findOneQuery);
+		if (!store) {
+			res.status(404).json({ error: 'store not found' });
+		} else {
+			res.status(200).json({ status: store });
+		}
+		console.log(store);
+	} catch (error) {
+		console.log(error);
+		res.status(401).json({ error: error.message });
+	}
+}
+module.exports = {
+	getStoreByIdtimezoneController,
+};
