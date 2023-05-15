@@ -18,7 +18,7 @@ async function getStatusController(req, res) {
 }
 async function getStoreByIdController(req, res) {
 	try {
-		const findOneQuery = { store_id: 5955337179846162000n };
+		const findOneQuery = { store_id: '5955337179846162432' };
 		//const id = req.body.id;
 		const store = await getStoreById(findOneQuery);
 		if (!store) {
