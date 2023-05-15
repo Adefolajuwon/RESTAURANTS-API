@@ -1,6 +1,9 @@
 const { Router } = require('express');
 const express = require('express');
 const {
+	getStoreByIdtimezoneController,
+} = require('../controllers/timezoneController');
+const {
 	getStatusController,
 	getStoreByIdController,
 } = require('../controllers/storeActiveController');
@@ -18,6 +21,8 @@ router.get('/get_report', async (req, res) => {
 	// If the report generation is not complete, return "Running" as the output.
 });
 router.get('/test', getStoreByIdController);
+router.get('/timezone', getStoreByIdtimezoneController);
+
 // router.get('/test', getStatusController);
 
 module.exports = router;

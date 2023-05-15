@@ -1,5 +1,5 @@
 const timezone = require('../schemas/timezone');
-async function getStorebyId(findOneQuery) {
+async function getStorebyIdtimezone(findOneQuery) {
 	try {
 		let response = await timezone.findOne(findOneQuery);
 		if (!response) {
@@ -11,4 +11,4 @@ async function getStorebyId(findOneQuery) {
 		console.log(error);
 	}
 }
-module.exports = { getStorebyId };
+module.exports = { getStorebyIdtimezone };
