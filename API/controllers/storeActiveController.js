@@ -18,7 +18,7 @@ async function getStatusController(req, res) {
 }
 async function getStoreByIdController(req, res) {
 	try {
-		const findOneQuery = { store_id: 6 };
+		const findOneQuery = { store_id: 5955337179846162000n };
 		//const id = req.body.id;
 		const store = await getStoreById(findOneQuery);
 		if (!store) {
@@ -33,7 +33,6 @@ async function getStoreByIdController(req, res) {
 	}
 }
 // async function getInfo() {}
-5955337179846162000;
 module.exports = {
 	getStatusController,
 	getStoreByIdController,

@@ -1,5 +1,5 @@
 const storeActive = require('../schemas/active');
-const run = require('../lib/mongoose');
+// const run = require('../lib/mongoose');
 
 async function getStatus(storeId) {
 	try {
