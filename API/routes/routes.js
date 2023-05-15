@@ -7,6 +7,7 @@ const {
 	getStatusController,
 	getStoreByIdController,
 } = require('../controllers/storeActiveController');
+const { finalinfo } = require('../controllers/allDataController');
 const router = express.Router();
 
 router.get('/trigger_report', async (req, res) => {
@@ -22,7 +23,7 @@ router.get('/get_report', async (req, res) => {
 });
 router.get('/test', getStoreByIdController);
 router.get('/timezone', getStoreByIdtimezoneController);
-
+router.get('/allinfo', finalinfo);
 // router.get('/test', getStatusController);
 
 module.exports = router;
