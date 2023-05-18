@@ -9,6 +9,7 @@ async function getStoreByIdtimezoneController(req, res) {
 		} else {
 			res.status(200).json({ status: store });
 		}
+
 		console.log(store);
 	} catch (error) {
 		console.log(error);
