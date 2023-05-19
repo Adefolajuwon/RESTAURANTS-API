@@ -2,7 +2,7 @@ const { getStorebyIdtimezone } = require('../models/timeZone');
 async function getStoreByIdtimezoneController(req, res) {
 	try {
 		const findOneQuery = { store_id: '5415949628544298000' };
-		//const id = req.body.id;
+		//const id = req.body.idii;
 		const store = await getStorebyIdtimezone(findOneQuery);
 		if (!store) {
 			res.status(404).json({ error: 'store not found' });
