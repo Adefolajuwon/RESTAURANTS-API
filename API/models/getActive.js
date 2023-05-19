@@ -26,6 +26,7 @@ async function getStatus(storeId) {
 // 		console.log(error);
 // 	}
 // }
+//cats
 async function getStoreById(findOneQuery) {
 	try {
 		let response = await storeActive.findOne(findOneQuery);
