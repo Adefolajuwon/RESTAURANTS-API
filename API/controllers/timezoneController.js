@@ -10,7 +10,7 @@ async function getStoreByIdtimezoneController(req, res) {
 			res.status(200).json({ status: store });
 		}
 
-		console.log(store);
+		// console.log(store);
 	} catch (error) {
 		console.log(error);
 		res.status(401).json({ error: error.message });

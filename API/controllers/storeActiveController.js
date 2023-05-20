@@ -1,4 +1,5 @@
 const { getStatus, getStoreById } = require('../models/getActive');
+const { getStorebyIdtimezone } = require('../models/timeZone');
 
 async function getStatusController(req, res) {
 	try {
