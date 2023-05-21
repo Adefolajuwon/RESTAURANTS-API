@@ -11,20 +11,20 @@ const {
 const router = express.Router();
 router.get('/test', getStoreByIdController);
 router.get('/timezone', getStoreByIdtimezoneController);
-async function finalinfo(req, res) {
-	try {
-		const storeResult = await getStoreByIdController(req, res);
-		const timezoneResult = await getStoreByIdtimezoneController(req, res);
-		const output = {
-			store: storeResult,
-			timezone: timezoneResult,
-		};
-		return output;
-	} catch (error) {
-		console.log(error);
-		res.status(401).json({ error: error.message });
-	}
-}
+// async function finalinfo(req, res) {
+// 	try {
+// 		const storeResult = await getStoreByIdController(req, res);
+// 		const timezoneResult = await getStoreByIdtimezoneController(req, res);
+// 		const output = {
+// 			store: storeResult,
+// 			timezone: timezoneResult,
+// 		};
+// 		return output;
+// 	} catch (error) {
+// 		console.log(error);
+// 		res.status(401).json({ error: error.message });
+// 	}
+// }
 
 router.get('/trigger_report', async (req, res) => {
 	// Query the database to fetch the necessary data
@@ -38,7 +38,7 @@ router.get('/get_report', async (req, res) => {
 	// If the report generation is not complete, return "Running" as the output.
 });
 
-router.get('/allinfo', finalinfo);
+router.get('/test', getStoreByIdController);
 // router.get('/test', getStatusController);
 
 module.exports = router;
