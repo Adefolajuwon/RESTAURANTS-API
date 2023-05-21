@@ -50,6 +50,41 @@ async function getStatusController(req, res) {
 // 		res.status(401).json({ error: error.message });
 // 	}
 //}
+async function getSchema(re, res) {
+	try {
+		const findOneQuery = { store_id: '5955337179846162432' };
+		const store = await getStoreById(findOneQuery);
+		if (!store) {
+			res.status(404).json({ error: 'store 1 not found' });
+			return; // Return early to prevent further execution
+		}
+
+		const findOneQuery2 = { store_id: '5415949628544298000' };
+		const store2 = await getStorebyIdtimezone(findOneQuery2);
+		if (!store2) {
+			res.status(404).json({ error: 'store 2 not found' });
+			return; // Return early to prevent further execution
+		}
+		const findOneQuery3 = { store_id: '5955337179846162432' };
+		const store3 = await getStoreById(findOneQuery3);
+		if (!store) {
+			res.status(404).json({ error: 'store 1 not found' });
+			return; // Return early to prevent further execution
+		}
+		if (findOneQuery === findOneQuery2 && findOneQuery2 === findOneQuery3) {
+			const output = {
+				Store1: store,
+				Store2: store2,
+				Store3: store3,
+			};
+			res.status(200).json(output); // Send the output as JSON response
+		} else {
+			res.status(401).json({ error: 'store not found' }); // Send the output as JSON response
+		}
+
+		console.log(output);
+	} catch (error) {}
+}
 async function getStoreByIdController(req, res) {
 	try {
 		const findOneQuery = { store_id: '5955337179846162432' };
