@@ -100,7 +100,6 @@ async function getStoreByIdController(req, res) {
 			res.status(404).json({ error: 'store 2 not found' });
 			return; // Return early to prevent further execution
 		}
-
 		const output = {
 			Store1: store,
 			Store2: store2,
