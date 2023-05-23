@@ -50,7 +50,7 @@ async function getStatusController(req, res) {
 // 		res.status(401).json({ error: error.message });
 // 	}
 //}
-async function getSchema(re, res) {
+async function getSchema(req, res) {
 	try {
 		const findOneQuery = { store_id: '5955337179846162432' };
 		const store = await getStoreById(findOneQuery);
@@ -116,4 +116,5 @@ async function getStoreByIdController(req, res) {
 module.exports = {
 	getStatusController,
 	getStoreByIdController,
+	getSchema,
 };
