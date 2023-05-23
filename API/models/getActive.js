@@ -18,7 +18,7 @@ async function getStatus(storeId) {
 // 	try {
 // 		let response = await storeActive.findOne(store_id);
 // 		if (!response) {
-// 			console.log('stor3ted ndot fsound');
+// 			console.log('stor3ted ndot fssoeund');
 // 		} else {
 // 			return response;
 // 		}
