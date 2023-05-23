@@ -18,7 +18,7 @@ async function getStatus(storeId) {
 // 	try {
 // 		let response = await storeActive.findOne(store_id);
 // 		if (!response) {
-// 			console.log('store not found');
+// 			console.log('stor3te not fsound');
 // 		} else {
 // 			return response;
 // 		}
