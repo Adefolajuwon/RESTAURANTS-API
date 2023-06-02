@@ -71,6 +71,7 @@ async function getSchema(req, res) {
 			res.status(404).json({ error: 'store 1 not found' });
 			return; // Return early to prevent further execution
 		}
+
 		if (findOneQuery) {
 			const output = {
 				Store1: store,
