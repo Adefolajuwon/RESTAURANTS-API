@@ -59,19 +59,19 @@ async function getSchema(req, res) {
 			return; // Return early to prevent further execution
 		}
 
-		const findOneQuery2 = { store_id: '5415949628544298000' };
-		const store2 = await getStorebyIdtimezone(findOneQuery2);
+		// const findOneQuery2 = { store_id: '5415949628544298000' };
+		const store2 = await getStorebyIdtimezone(findOneQuery);
 		if (!store2) {
 			res.status(404).json({ error: 'store 2 not found' });
 			return; // Return early to prevent further execution
 		}
-		const findOneQuery3 = { store_id: '5955337179846162432' };
-		const store3 = await getStoreById(findOneQuery3);
+		// const findOneQuery3 = { store_id: '5955337179846162432' };
+		const store3 = await getStoreById(findOneQuery);
 		if (!store) {
 			res.status(404).json({ error: 'store 1 not found' });
 			return; // Return early to prevent further execution
 		}
-		if (findOneQuery === findOneQuery2 && findOneQuery2 === findOneQuery3) {
+		if (findOneQuery) {
 			const output = {
 				Store1: store,
 				Store2: store2,
