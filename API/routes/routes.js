@@ -6,6 +6,7 @@ const {
 const {
 	getStatusController,
 	getStoreByIdController,
+	getSchema,
 } = require('../controllers/storeActiveController');
 
 const router = express.Router();
@@ -38,7 +39,7 @@ router.get('/get_report', async (req, res) => {
 	// If the report generation is not complete, return "Running" as the output.
 });
 
-router.get('/test', getStoreByIdController);
+router.get('/test', getSchema);
 // router.get('/test', getStatusController);
 
 module.exports = router;
