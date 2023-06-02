@@ -4,13 +4,12 @@ const {
 	getStoreByIdtimezoneController,
 } = require('../controllers/timezoneController');
 const {
-	getStatusController,
 	getStoreByIdController,
 	getSchema,
 } = require('../controllers/storeActiveController');
 
 const router = express.Router();
-router.get('/test', getStoreByIdController);
+// router.get('/test', getStoreByIdController);
 router.get('/timezone', getStoreByIdtimezoneController);
 // async function finalinfo(req, res) {
 // 	try {
