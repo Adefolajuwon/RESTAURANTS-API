@@ -1,6 +1,6 @@
 const { getStatus, getStoreById } = require('../models/getActive');
 const { getStorebyIdtimezone } = require('../models/timeZone');
-
+const { getStorebyIdbusinesshour } = require('../models/businessHour');
 async function getStatusController(req, res) {
 	try {
 		// timestamp_utc: '2023-01-24 09:08:18.436854 UTC'
@@ -35,24 +35,39 @@ async function getSchema(req, res) {
 			return; // Return early to prevent further execution
 		}
 		// const findOneQuery3 = { store_id: '5955337179846162432' };
-		const store3 = await getStoreById(findOneQuery);
+		const store3 = await getStorebyIdbusinesshour(findOneQuery);
 		if (!store) {
 			res.status(404).json({ error: 'store 1 not found' });
 			return; // Return early to prevent further execution
 		}
 
+		// if (findOneQuery) {
+		// 	const output = {
+		// 		status: store.status,
+		// 		timezone: store2.timezone_str,
+		// 		day: store3.day,
+		// 		start: store3.start_time_local,
+		// 		end: store3.end_local,
+		// 	};
+		// 	res.status(200).json(output); // Send the output as JSON response
+		// } else {
+		// 	res.status(401).json({ error: 'store not found' }); // Send the output as JSON response
+		// }
+
+		// console.log(output);
 		if (findOneQuery) {
 			const output = {
-				Store1: store,
-				Store2: store2,
-				Store3: store3,
+				status: store.status,
+				timezone: store2.timezone_str,
+				day: store3.day,
+				start: store3.start_time_local,
+				end: store3.end_local,
 			};
 			res.status(200).json(output); // Send the output as JSON response
+			console.log(output); // Log the output
 		} else {
 			res.status(401).json({ error: 'store not found' }); // Send the output as JSON response
 		}
-
-		console.log(output);
 	} catch (error) {
 		console.log(error);
 		res.status(404).json({ error });

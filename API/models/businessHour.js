@@ -1,4 +1,4 @@
-const StoreStatus = require('../schemas/timezone');
+const StoreStatus = require('../schemas/business');
 async function getStorebyIdbusinesshour(findOneQuery) {
 	try {
 		let response = await StoreStatus.findOne(findOneQuery);
