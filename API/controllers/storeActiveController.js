@@ -43,7 +43,7 @@ async function getSchema(req, res) {
 
 		// if (findOneQuery) {
 		// 	const output = {
-		// 		status: store.status,
+		// 		status: store.status,h
 		// 		timezone: store2.timezone_str,
 		// 		day: store3.day,
 		// 		start: store3.start_time_local,
