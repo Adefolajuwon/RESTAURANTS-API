@@ -6,6 +6,7 @@ async function getStatus(storeId) {
 		let response = await storeActive.findOne(storeId);
 
 		if (response === null) {
+			// console.log('works')
 			console.log('store not found');
 		} else {
 			return response;

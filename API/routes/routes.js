@@ -22,6 +22,7 @@ router.get('/timezone', getStoreByIdtimezoneController);
 // 		return output;
 // 	} catch (error) {
 // 		console.log(error);
+
 // 		res.status(401).json({ error: error.message });
 // 	}
 // }
