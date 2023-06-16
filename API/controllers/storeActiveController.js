@@ -48,7 +48,7 @@ async function getSchema(req, res) {
 				end: store3.end_time_local,
 			};
 			res.status(200).json(output); // Send the output as JSON response
-			console.log(output); // Log the outputf
+			console.log(output); // Log the output
 		} else {
 			res.status(401).json({ error: 'store not found' }); // Send the output as JSON response
 		}
