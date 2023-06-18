@@ -36,7 +36,7 @@ async function getSchema(req, res) {
 		const store3 = await getStorebyIdbusinesshour(findOneQuery);
 		if (!store) {
 			res.status(404).json({ error: 'store 1 not found' });
-			return; // Return early to prevent further execution
+			return; // Returnn early to prevent further execution
 		}
 
 		if (findOneQuery) {
