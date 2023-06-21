@@ -40,6 +40,6 @@ router.get('/get_report', async (req, res) => {
 });
 
 router.get('/test', getSchema);
-// router.get('/test', getmStatusController);
+// router.get('/test', getmStatusContbroller);
 
 module.exports = router;
