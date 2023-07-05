@@ -19,7 +19,7 @@ async function getStatusController(req, res) {
 	}
 }
 
-async function getSchema(req, res) {
+async function get_report(req, res) {
 	try {
 		const findOneQuery = { store_id: '5955337179846162432' };
 		const store = await getStoreById(findOneQuery);
@@ -35,7 +35,7 @@ async function getSchema(req, res) {
 		}
 		const store3 = await getStorebyIdbusinesshour(findOneQuery);
 		if (!store) {
-			res.status(404).json({ error: 'store 1 not found' });
+			res.status(404).json({ error: 'store 3 not found' });
 			return; // Returnn early to prevent further execution
 		}
 
@@ -58,8 +58,7 @@ async function getSchema(req, res) {
 	}
 }
 
-// async function getInfo() {}
 module.exports = {
 	getStatusController,
-	getSchema,
+	get_report,
 };

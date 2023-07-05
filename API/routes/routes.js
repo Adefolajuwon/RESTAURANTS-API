@@ -5,27 +5,10 @@ const {
 } = require('../controllers/timezoneController');
 const {
 	getStoreByIdController,
-	getSchema,
+	get_report,
 } = require('../controllers/storeActiveController');
 
 const router = express.Router();
-// router.get('/test', getStoreByIdController);
-router.get('/timezone', getStoreByIdtimezoneController);
-// async function finalinfo(req, res) {
-// 	try {
-// 		const storeResult = await getStoreByIdController(req, res);
-// 		const timezoneResult = await getStoreByIdtimezoneController(req, res);
-// 		const output = {
-// 			store: storeResult,
-// 			timezone: timezoneResult,
-// 		};
-// 		return output;
-// 	} catch (error) {
-// 		console.log(error);
-
-// 		res.status(401).json({ error: error.message });
-// 	}
-// }
 
 router.get('/trigger_report', async (req, res) => {
 	// Query the database to fetch the necessary data
@@ -38,8 +21,5 @@ router.get('/get_report', async (req, res) => {
 	// If the report generation is complete, return the CSV file
 	// If the report generation is not complete, return "Running" as the output.
 });
-
-router.get('/test', getSchema);
-// router.get('/test', getmStatusContbrohhller);
 
 module.exports = router;
