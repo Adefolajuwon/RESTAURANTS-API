@@ -1,4 +1,8 @@
 const Report = require('../schemas/reportId');
+const { getStatus, getStoreById } = require('../models/getActive');
+const { getStorebyIdtimezone } = require('../models/timeZone');
+const { getStorebyIdbusinesshour } = require('../models/businessHour');
+
 function generateRandomString() {
 	const characters =
 		'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -14,11 +18,54 @@ async function createReport(req, res) {
 	try {
 		// Assuming you have imported and properly initialized the `Report` object
 		const result = await Report.create({ reportId });
-		return res.status(200).json({ reportId });
+		return res.status(200).json({ result });
 	} catch (error) {
 		res.json(error);
 		console.log(error);
 	}
 }
+async function reportOutput(req, res) {
+	const reportId = req.params.id;
+	const ID = await Report.findOne(reportId);
+	if (ID) {
+		try {
+			const store = await getStoreById(reportId);
+			if (!store) {
+				res.status(404).json({ error: 'store 1 not found' });
+				return; // Return early to prevent further execution
+			}
 
-module.exports = { createReport };
+			const store2 = await getStorebyIdtimezone(reportId);
+			if (!store2) {
+				res.status(500).json({ error: 'store 2 not found' });
+				return; // Return early to prevent further execution
+			}
+			const store3 = await getStorebyIdbusinesshour(reportId);
+			if (!store) {
+				res.status(404).json({ error: 'store 3 not found' });
+				return; // Returnn early to prevent further execution
+			}
+
+			if (reportId) {
+				const output = {
+					status: store.status,
+					timezone: store2.timezone_str,
+					day: store3.day,
+					start: store3.start_time_local,
+					end: store3.end_time_local,
+				};
+				res.status(200).json(output); // Send the output as JSON response
+				console.log(output); // Log the output
+			} else {
+				res.status(401).json({ error: 'store not found' }); // Send the output as JSON response
+			}
+		} catch (error) {
+			console.log(error);
+			res.status(404).json({ error });
+		}
+	} else {
+		res.status(404).json({ error: 'Id not found' });
+	}
+}
+
+module.exports = { createReport, reportOutput };
