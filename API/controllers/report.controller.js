@@ -26,7 +26,7 @@ async function createReport(req, res) {
 }
 async function reportOutput(req, res) {
 	const reportId = req.params.id;
-	const ID = await Report.findOne(reportId);
+	const ID = await Report.findOne({ reportId });
 	if (ID) {
 		try {
 			const store = await getStoreById(reportId);
