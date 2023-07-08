@@ -29,24 +29,25 @@ async function reportOutput(req, res) {
 	const ID = await Report.findOne({ reportId });
 	if (ID) {
 		try {
-			const store = await getStoreById(reportId);
+			const findOneQuery = { store_id: '5955337179846162432' };
+			const store = await getStoreById(findOneQuery);
 			if (!store) {
 				res.status(404).json({ error: 'store 1 not found' });
 				return; // Return early to prevent further execution
 			}
 
-			const store2 = await getStorebyIdtimezone(reportId);
+			const store2 = await getStorebyIdtimezone(findOneQuery);
 			if (!store2) {
 				res.status(500).json({ error: 'store 2 not found' });
 				return; // Return early to prevent further execution
 			}
-			const store3 = await getStorebyIdbusinesshour(reportId);
+			const store3 = await getStorebyIdbusinesshour(findOneQuery);
 			if (!store) {
 				res.status(404).json({ error: 'store 3 not found' });
 				return; // Returnn early to prevent further execution
 			}
 
-			if (reportId) {
+			if (findOneQuery) {
 				const output = {
 					status: store.status,
 					timezone: store2.timezone_str,
