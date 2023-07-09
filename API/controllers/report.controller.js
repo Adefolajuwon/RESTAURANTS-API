@@ -68,5 +68,5 @@ async function reportOutput(req, res) {
 		res.status(404).json({ error: 'Id not found' });
 	}
 }
-
+async function output(req, res) {}
 module.exports = { createReport, reportOutput };
