@@ -14,7 +14,7 @@ function generateRandomString() {
 }
 async function createReport(req, res) {
 	const reportId = generateRandomString();
-	// console.log(reportId);
+	// console.log(reportId);s
 	try {
 		// Assuming you have imported and properly initialized the `Report` object
 		const result = await Report.create({ reportId });
