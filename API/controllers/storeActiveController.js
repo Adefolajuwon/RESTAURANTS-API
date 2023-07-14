@@ -1,19 +1,34 @@
 const { getStatus, getStoreById } = require('../models/getActive');
 const { getStorebyIdtimezone } = require('../models/timeZone');
 const { getStorebyIdbusinesshour } = require('../models/businessHour');
-const redis = require('redis');
+const Redis = require('redis');
+const { promisify } = require('util');
+
+const redisClient = Redis.createClient();
+const DEFAULT_EXPIRATION = 3600;
+// Promisify Redis client methods for easier use with async/await
+const redisGet = promisify(redisClient.get).bind(redisClient);
+const redisSetEx = promisify(redisClient.setex).bind(redisClient);
+
 async function getStatusController(req, res) {
 	try {
-		const findOneQuery = { status: 'active' };
-		const store = await getStatus(findOneQuery);
+		const storeData = await redisGet('storeData');
 
-		if (store === null) {
-			res.status(404).json({ error: 'store not found' });
+		if (storeData != null) {
+			return res.json(storeData);
 		} else {
-			res.status(200).json({ status: store });
-		}
+			const findOneQuery = { status: 'active' };
+			const store = await getStatus(findOneQuery);
 
-		console.log(store);
+			if (store === null) {
+				res.status(404).json({ error: 'store not found' });
+			} else {
+				res.status(200).json({ status: store });
+			}
+
+			console.log(store);
+			await redisSetEx('storeData', DEFAULT_EXPIRATION, store);
+		}
 	} catch (error) {
 		console.log(error);
 		res.status(401).json({ error: error.message });

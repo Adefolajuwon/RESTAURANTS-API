@@ -13,10 +13,9 @@ const storeActive = require('../schemas/active');
 // 		console.log(error);
 // 	}
 // }
-//cats
 async function getStatus(storeId) {
 	try {
-		let response = await storeActive.findOne(storeId);
+		let response = await storeActive.find(storeId).limit(20);
 
 		if (response === null) {
 			console.log('store not found');
