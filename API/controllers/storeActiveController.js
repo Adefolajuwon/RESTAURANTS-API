@@ -6,37 +6,10 @@ const { promisify } = require('util');
 
 const redisClient = Redis.createClient();
 const DEFAULT_EXPIRATION = 3600;
-// Promisify Redis client methods for easier use with async/await
-// const redisGet = promisify(redisClient.get).bind(redisClient);
-// const redisSetEx = promisify(redisClient.setex).bind(redisClient);
 
-// async function getStatusController(req, res) {
-// 	try {
-// 		const storeData = await redisGet('storeData');
-
-// 		if (storeData != null) {
-// 			return res.json(storeData);
-// 		} else {
-// 			const findOneQuery = { status: 'active' };
-// 			const store = await getStatus(findOneQuery);
-
-// 			if (store === null) {
-// 				res.status(404).json({ error: 'store not found' });
-// 			} else {
-// 				res.status(200).json({ status: store });
-// 			}
-
-// 			console.log(store);
-// 			await redisSetEx('storeData', DEFAULT_EXPIRATION, store);
-// 		}
-// 	} catch (error) {
-// 		console.log(error);
-// 		res.status(401).json({ error: error.message });
-// 	}
-// }
 async function getStatusController(req, res) {
 	try {
-		await redisClient.get('storeData', async (error, storeData) => {
+		redisClient.get('storeData', async (error, storeData) => {
 			if (error) console.log(error);
 			if (storeData != null) {
 				return res.json(storeData);
@@ -51,8 +24,7 @@ async function getStatusController(req, res) {
 				}
 
 				console.log(store);
-				// await client.connect();
-				await redisClient.setEx('storeData', DEFAULT_EXPIRATION, store);
+				redisClient.setEx('storeData', DEFAULT_EXPIRATION, store);
 			}
 		});
 	} catch (error) {
