@@ -12,7 +12,6 @@ router.get('/test', getStatusController);
 router.get('/get_report/:id', reportOutput);
 // router.get('/get_report', async (req, res) => {
 // 	const reportId = req.query.report_id;
-// 	// Check the status of the report generation based on the report ID
 // 	// If the report generation is complete, return the CSV file
 // 	// If the report generation is not complete, return "Running" as the output.
 // });
