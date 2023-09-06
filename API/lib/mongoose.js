@@ -13,5 +13,5 @@ async function startMongoose() {
 		'mongodb+srv://juwon:tremothegoat@cluster0.lary7db.mongodb.net/?retryWrites=true&w=majority'
 	);
 }
-
+//process
 module.exports = { startMongoose, mongoose };
