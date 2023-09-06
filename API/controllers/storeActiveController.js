@@ -44,12 +44,12 @@ async function get_report(req, res) {
 		const store2 = await getStorebyIdtimezone(findOneQuery);
 		if (!store2) {
 			res.status(500).json({ error: 'store 2 not found' });
-			return; // Return early to prevent further execution
+			return;
 		}
 		const store3 = await getStorebyIdbusinesshour(findOneQuery);
 		if (!store) {
 			res.status(404).json({ error: 'store 3 not found' });
-			return; // Returnn early to prevent further execution
+			return;
 		}
 
 		if (findOneQuery) {
