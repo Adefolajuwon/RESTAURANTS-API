@@ -1,5 +1,18 @@
 const storeActive = require('../schemas/active');
+// const run = require('../lib/mongoose');
 
+// async function getStoreById(store_id) {
+// 	try {
+// 		let response = await storeActive.findOne(store_id);
+// 		if (!response) {
+// 			console.log('stor3ted ndot fssccoeund');
+// 		} else {
+// 			return response;
+// 		}
+// 	} catch (error) {
+// 		console.log(error);
+// 	}
+// }
 async function getStatus(storeId) {
 	try {
 		let response = await storeActive.find(storeId).limit(20);
